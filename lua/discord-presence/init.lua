@@ -18,7 +18,7 @@ return {
     viewRepo_enable = true,
 
     discord = {
-      client_id = '1057146873208655882'
+      client_id = '1059272441194623126'
     },
 
     editing_text         = 'Editing @filename on line @linenumber',
@@ -29,8 +29,17 @@ return {
     workspace_text       = 'Working on @workspace'
   },
 
-  -- @param num if you reading this, you gay
-  setup = function(self)
+  options_update = function(self, obj, new_obj)
+    for name, value in pairs(new_obj) do
+      obj[name] = value
+    end
+
+    return obj
+  end,
+
+  -- @param options set your prefer configuration
+  setup = function(self, options)
+    self.options = self:options_update(self.options, options)
 
   end
 }
